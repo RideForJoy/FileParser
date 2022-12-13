@@ -1,0 +1,185 @@
+[
+  {
+    "barcodes": [
+      "1"
+    ],
+    "case-item": {
+      "case-count": 6,
+      "dimensions": {
+        "height": 12.2,
+        "length": 10.2,
+        "unit-of-measure": "in",
+        "width": 3.5
+      },
+      "weight": {
+        "unit-of-measure": "lb",
+        "weight": 19.84
+      }
+    },
+    "categories-hierarchy": [],
+    "corp-ids": [
+      "453627",
+      "453629",
+      "253621"
+    ],
+    "description": "COCA COLA ORIGINAL TASTE, 6 pk",
+    "discontinued": false,
+    "ecom-ids": [
+      "83645281"
+    ],
+    "feature-attributes": {
+      "food-safety": "food",
+      "is-bulk": false,
+      "is-case-storage": false,
+      "is-chemical": false,
+      "is-crushable": false,
+      "is-weight-variable-on-receipt": false,
+      "is-egg": false,
+      "is-glass-packaged": false,
+      "is-hazardous": false,
+      "is-heavy": false,
+      "is-raw": false,
+      "is-specific-chilled": false,
+      "is-stackable": false,
+      "is-vertical": false
+    },
+    "image": "https://www.retailer.com/images/83645281.png",
+    "item-address": {
+      "aisle": "21",
+      "area": "A34",
+      "bay": "5",
+      "position": "1",
+      "shelf": "2"
+    },
+    "item-type": "REG",
+    "mfc-id": "D02",
+    "mfc-stop-buy": false,
+    "mfc-stop-fulfill": false,
+    "min-remaining-shelf-life": 70,
+    "name": "COCA COLA",
+    "primary-corp-id": "453629",
+    "requires-expiration-date": true,
+    "retail-item": {
+      "dimensions": {
+        "height": 12.2,
+        "length": 3.4,
+        "unit-of-measure": "in",
+        "width": 3.4
+      },
+      "weight": {
+        "unit-of-measure": "lb",
+        "weight": 3.3
+      }
+    },
+    "seasonal": true,
+    "shelf-life": 364,
+    "slotting-eligible": true,
+    "supplier-info": [
+      {
+        "supplier-id": "001392",
+        "supplier-keep-buy": true,
+        "supplier-name": "COCA COLA CO",
+        "supplier-perform-cycle": 4,
+        "supplier-product-id": "4900005537",
+        "supplier-sub-account": "003",
+        "supplier-type": "DSD"
+      }
+    ],
+    "temperature-zone": [
+      "ambient"
+    ],
+    "tom-id": 2
+  }
+  ,
+  {
+    "barcodes": [
+      "1"
+    ],
+    "case-item": {
+      "case-count": 6,
+      "dimensions": {
+        "height": 12.2,
+        "length": 10.2,
+        "unit-of-measure": "in",
+        "width": 3.5
+      },
+      "weight": {
+        "unit-of-measure": "lb",
+        "weight": 19.84
+      }
+    },
+    "categories-hierarchy": [],
+    "corp-ids": [
+      "453627",
+      "453629",
+      "253621"
+    ],
+    "description": "COCA COLA ORIGINAL TASTE, 6 pk",
+    "discontinued": false,
+    "ecom-ids": [
+      "83645281"
+    ],
+    "feature-attributes": {
+      "food-safety": "food",
+      "is-bulk": false,
+      "is-case-storage": false,
+      "is-chemical": false,
+      "is-crushable": false,
+      "is-weight-variable-on-receipt": false,
+      "is-egg": false,
+      "is-glass-packaged": false,
+      "is-hazardous": false,
+      "is-heavy": false,
+      "is-raw": false,
+      "is-specific-chilled": false,
+      "is-stackable": false,
+      "is-vertical": false
+    },
+    "image": "https://www.retailer.com/images/83645281.png",
+    "item-address": {
+      "aisle": "21",
+      "area": "A34",
+      "bay": "5",
+      "position": "1",
+      "shelf": "2"
+    },
+    "item-type": "REG",
+    "mfc-id": "D02",
+    "mfc-stop-buy": false,
+    "mfc-stop-fulfill": false,
+    "min-remaining-shelf-life": 70,
+    "name": "COCA COLA",
+    "primary-corp-id": "453629",
+    "requires-expiration-date": true,
+    "retail-item": {
+      "dimensions": {
+        "height": 12.2,
+        "length": 3.4,
+        "unit-of-measure": "in",
+        "width": 3.4
+      },
+      "weight": {
+        "unit-of-measure": "lb",
+        "weight": 3.3
+      }
+    },
+    "seasonal": true,
+    "shelf-life": 364,
+    "slotting-eligible": true,
+    "supplier-info": [
+      {
+        "supplier-id": "001392",
+        "supplier-keep-buy": true,
+        "supplier-name": "COCA COLA CO",
+        "supplier-perform-cycle": 4,
+        "supplier-product-id": "4900005537",
+        "supplier-sub-account": "003",
+        "supplier-type": "DSD"
+      }
+    ],
+    "temperature-zone": [
+      "ambient"
+    ],
+    "tom-id": "2"
+  }
+]

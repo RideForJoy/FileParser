@@ -12,7 +12,7 @@ func CopyFromBucketToLocal(objectName string) bool {
 
 	bucket := "product-catalog-file"
 	//objectName := "Takeoff_product_catalog_full_D02_20221207230258.json" //"test-finalize.json"
-	destFileName := "file1.json"
+	destFileName := "pcv6_example.json"
 
 	f, err := os.Create(destFileName)
 	if err != nil {

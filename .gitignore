@@ -1,2 +1,5 @@
 .idea
 .vscode
+file1.json
+file_huge1.json
+.gcloudignore

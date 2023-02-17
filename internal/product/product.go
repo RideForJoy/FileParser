@@ -1,5 +1,7 @@
 package product
 
+type Products []Product
+
 type Product struct {
 	Barcodes []string `json:"barcodes"`
 	CaseItem struct {

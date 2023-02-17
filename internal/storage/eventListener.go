@@ -16,7 +16,6 @@ type ObjectStorageData struct {
 
 func ListenStorageEvent(e event.Event) string {
 
-	//TODO Listen only file created event
 	log.Printf("Event ID: %s", e.ID())
 	log.Printf("Event Type: %s", e.Type())
 

@@ -3,7 +3,6 @@ package read
 import (
 	gcpStorage "cloud.google.com/go/storage"
 	"context"
-	"fmt"
 	"github.com/cloudevents/sdk-go/v2/event"
 	"log"
 	"time"
@@ -26,17 +25,17 @@ func processFile(ctx context.Context, storageClient *gcpStorage.Client, fileName
 	println("Raw_products publishing started at: ", ProcessingStartTime.String())
 
 	for i := 0; i < len(chunkedProducts); i++ {
-		publishStart := time.Now()
+		//publishStart := time.Now()
 		err := pubsub.PublishRawProducts(pubSubClient, chunkedProducts[i])
 		if err != nil {
 			return err
 		}
-		now := time.Now()
-		fmt.Println("Published chunk №", i, "with length ", len(chunkedProducts[i]), "in ", now.Sub(publishStart).String())
+		//now := time.Now()
+		//fmt.Println("Published chunk №", i, "with length ", len(chunkedProducts[i]), "in ", now.Sub(publishStart).String())
 	}
 	finish := time.Now()
 
-	println("Raw_products publishing finished at: ", finish.Sub(ProcessingStartTime).String())
+	println("Raw_products publishing finished at: ", finish.Sub(ProcessingStartTime).String(), "for count: ", len(products))
 	return nil
 }
 
@@ -51,24 +50,24 @@ func ListenForFile(ctx context.Context, e event.Event) error {
 		if fileDateErr != nil {
 			if err := storage.MoveFile(ctx, storageClient, "unknown", "", fileName); err != nil {
 				println("Can't move file. Function stop due to error: ", err)
-				return nil
 			}
+			return nil
 		}
+
 		movePath := file.MovePath(fileDate)
 		if file.IsFresh(fileDate) {
-			err := processFile(ctx, storageClient, fileName)
-			if err != nil {
-				return nil
+			if err := processFile(ctx, storageClient, fileName); err != nil {
+				println("Can't process file due to error: ", err)
 			}
+
 			if err := storage.MoveFile(ctx, storageClient, "processed", movePath, fileName); err != nil {
-				println("Can't move file. Function stop due to error: ", err)
-				return nil
+				println("Can't move file due to error: ", err)
 			}
-			println("File: " + fileName + "processed and  moved to 'processed' folder")
+
+			println("File: " + fileName + " processed and moved to 'processed' folder")
 		} else {
 			if err := storage.MoveFile(ctx, storageClient, "skipped", movePath, fileName); err != nil {
-				println("Can't move file. Function stop due to error: ", err)
-				return nil
+				println("Can't move file due to error: ", err)
 			}
 			println("File: " + fileName + " moved to 'skipped' folder")
 		}
@@ -77,5 +76,4 @@ func ListenForFile(ctx context.Context, e event.Event) error {
 	}
 
 	return nil
-
 }

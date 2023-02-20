@@ -3,6 +3,7 @@ package storage
 import (
 	"github.com/cloudevents/sdk-go/v2/event"
 	"log"
+	"strings"
 	"time"
 )
 
@@ -15,21 +16,16 @@ type ObjectStorageData struct {
 }
 
 func ListenStorageEvent(e event.Event) string {
-
-	log.Printf("Event ID: %s", e.ID())
-	log.Printf("Event Type: %s", e.Type())
-
 	var data ObjectStorageData
 	if err := e.DataAs(&data); err != nil {
 		println("event.DataAs: %v", err)
 		return ""
 	}
 
-	log.Printf("Bucket: %s", data.Bucket)
-	log.Printf("File: %s", data.Name)
-	log.Printf("Metageneration: %d", data.Metageneration)
-	log.Printf("Created: %s", data.TimeCreated)
-	log.Printf("Updated: %s", data.Updated)
-
-	return data.Name
+	if strings.HasPrefix(data.Name, "data/") {
+		log.Printf("File: %s recieved", data.Name)
+		return data.Name
+	} else {
+		return ""
+	}
 }

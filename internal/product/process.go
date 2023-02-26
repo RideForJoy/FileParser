@@ -6,16 +6,16 @@ import (
 	"io"
 )
 
-func Unmarshal(file io.Reader) Products {
+func Unmarshal(file io.Reader) (Products, error) {
 	byteValue, _ := io.ReadAll(file)
 
 	var products Products
-
 	err := json.Unmarshal(byteValue, &products)
 	if err != nil {
-		fmt.Println("Error during unmarshal products: ", err) //TODO add better error handling
+		return nil, fmt.Errorf("errors during unmarshal products: %v", err)
 	}
-	return products
+
+	return products, nil
 }
 
 func ChunkBy(products []Product, chunkSize int) (chunks [][]Product) {

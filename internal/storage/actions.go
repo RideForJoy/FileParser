@@ -11,23 +11,21 @@ const (
 	bucket = "pc-file"
 )
 
-func CreateNewClient(ctx context.Context) *storage.Client {
-	client, err := storage.NewClient(ctx)
+func NewStorageClient(ctx context.Context) (*storage.Client, error) {
+	c, err := storage.NewClient(ctx)
 	if err != nil {
-		fmt.Println("Errors happened during storage client creating: ", err)
+		return nil, err
 	}
-	return client
+	return c, nil
 }
 
-func ReadFile(ctx context.Context, client *storage.Client, path string) *storage.Reader {
+func Read(ctx context.Context, client *storage.Client, path string) *storage.Reader {
 	fmt.Println("Opening file: ", path)
 	file, _ := client.Bucket(bucket).Object(path).NewReader(ctx)
 	return file
 }
 
-//folderPath string
-
-func MoveFile(ctx context.Context, client *storage.Client, folder string, movePath string, path string) error {
+func Move(ctx context.Context, client *storage.Client, folder string, movePath string, path string) error {
 	dsdName := strings.Replace(path, "data", folder, 1)
 
 	var fullPath string

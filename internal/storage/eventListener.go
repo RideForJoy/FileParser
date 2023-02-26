@@ -1,10 +1,12 @@
 package storage
 
 import (
-	"github.com/cloudevents/sdk-go/v2/event"
+	"errors"
 	"log"
 	"strings"
 	"time"
+
+	"github.com/cloudevents/sdk-go/v2/event"
 )
 
 type ObjectStorageData struct {
@@ -15,17 +17,17 @@ type ObjectStorageData struct {
 	Updated        time.Time `json:"updated,omitempty"`
 }
 
-func ListenStorageEvent(e event.Event) string {
+func ListenStorageEvent(e event.Event) (string, error) {
 	var data ObjectStorageData
 	if err := e.DataAs(&data); err != nil {
-		println("event.DataAs: %v", err)
-		return ""
+		return "", err
 	}
 
 	if strings.HasPrefix(data.Name, "data/") {
 		log.Printf("File: %s recieved", data.Name)
-		return data.Name
+		return data.Name, nil
 	} else {
-		return ""
+		errorString := "file: " + data.Name + " ignored"
+		return "", errors.New(errorString)
 	}
 }

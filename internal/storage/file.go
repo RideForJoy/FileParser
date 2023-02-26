@@ -1,4 +1,4 @@
-package file
+package storage
 
 import (
 	"errors"
@@ -20,31 +20,28 @@ func MovePath(fileDate time.Time) string {
 	return folderDatePart
 }
 
-func DateFromName(name string) (time.Time, error) {
+func DateFromName(fileName string) (time.Time, error) {
 	r := regexp.MustCompile(dateRegEpp)
-	stringDates := r.FindStringSubmatch(name)
+	stringDates := r.FindStringSubmatch(fileName)
 	if len(stringDates) == 0 {
-		errorString := "The file name: " + name + " doesn't contains a string in the regexp: " + dateRegEpp
+		errorString := "the file fileName: " + fileName + " doesn't contains a string in the regexp: " + dateRegEpp
 		return time.Time{}, errors.New(errorString)
 	}
 
 	fileDate, err := time.Parse(layoutTimeStamp, stringDates[0])
 	if err != nil {
-		errorString := "The file name: " + name + " doesn't contains a date by layout: " + layoutTimeStamp
+		errorString := "the file fileName: " + fileName + " doesn't contains a date by layout: " + layoutTimeStamp
 		return time.Time{}, errors.New(errorString)
 	}
-
 	return fileDate, nil
-
 }
 
 func IsFresh(fileDate time.Time) bool {
 	fileAge := int(fileDate.Sub(time.Now()).Hours()) / 24 //in days
-
-	if fileAge >= 30 || fileAge <= -1 {
-		return false
-	} else {
+	if fileAge > -32 && fileAge < 1 {
 		return true
+	} else {
+		return false
 	}
 }
 

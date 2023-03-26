@@ -43,27 +43,27 @@ func TestDateFromName(t *testing.T) {
 	}{
 		{
 			name:          "Correct file with h/m/s",
-			fileName:      "Takeoff_product_catalog_diff_2006_20230223101112.json",
+			fileName:      "file_20230223101112.json",
 			expectedTime:  time.Date(2023, time.February, 23, 10, 11, 12, 0, time.UTC),
 			expectedError: nil,
 		},
 		{
 			name:          "Correct file with 0",
-			fileName:      "Takeoff_product_catalog_diff_2006_20230223000000.json",
+			fileName:      "file_20230223000000.json",
 			expectedTime:  time.Date(2023, time.February, 23, 0, 0, 0, 0, time.UTC),
 			expectedError: nil,
 		},
 		{
 			name:          "Incorrect file name without date by regexp",
-			fileName:      "Takeoff_product_catalog_diff_2006_2023.json",
+			fileName:      "file_2023.json",
 			expectedTime:  time.Time{},
-			expectedError: errors.New("the file fileName: Takeoff_product_catalog_diff_2006_2023.json doesn't contains a string in the regexp: \\d{14,}"),
+			expectedError: errors.New("the file fileName: file_2023.json doesn't contains a string in the regexp: \\d{14,}"),
 		},
 		{
 			name:          "Incorrect file without date",
-			fileName:      "Takeoff_product_catalog_diff_2006_20239999999999.json",
+			fileName:      "file_20239999999999.json",
 			expectedTime:  time.Time{},
-			expectedError: errors.New("the file fileName: Takeoff_product_catalog_diff_2006_20239999999999.json doesn't contains a date by layout: 20060102150405"),
+			expectedError: errors.New("the file fileName: file_20239999999999.json doesn't contains a date by layout: 20060102150405"),
 		},
 	}
 	for _, test := range tests {
@@ -88,12 +88,12 @@ func TestIsFresh(t *testing.T) {
 		},
 		{
 			name:           "Last month",
-			fileDate:       time.Now().AddDate(0, 0, -31),
+			fileDate:       time.Now().AddDate(0, 0, -32),
 			expectedResult: true,
 		},
 		{
 			name:           "More that last month",
-			fileDate:       time.Now().AddDate(0, 0, -32),
+			fileDate:       time.Now().AddDate(0, 0, -33),
 			expectedResult: false,
 		},
 		{
@@ -122,17 +122,17 @@ func TestIsPCv6(t *testing.T) {
 	}{
 		{
 			name:           "UpperCase",
-			fileName:       "Takeoff_product_catalog_diff_2006_20230223010010.json",
+			fileName:       "file_20230223010010.json",
 			expectedResult: true,
 		},
 		{
 			name:           "LoverCase",
-			fileName:       "takeoff_product_catalog_diff_2006_20230223010010.json",
+			fileName:       "file_20230223010010.json",
 			expectedResult: true,
 		},
 		{
 			name:           "With folder",
-			fileName:       "data/takeoff_product_catalog_diff_.json",
+			fileName:       "data/file_.json",
 			expectedResult: true,
 		},
 		{

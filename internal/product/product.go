@@ -86,7 +86,7 @@ type Product struct {
 		SupplierType         string `json:"supplier-type,omitempty"`
 	} `json:"supplier-info,omitempty"`
 	TemperatureZone []string `json:"temperature-zone,omitempty"`
-	TomID           string   `json:"tom-id,omitempty"`
+	TomID           string   `json:"product-id,omitempty"`
 
 	UnknownFields map[string]json.RawMessage `json:"-"`
 }

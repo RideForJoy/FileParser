@@ -19,7 +19,7 @@ func TestUnmarshal(t *testing.T) {
 	}{
 		{
 			name: "full product",
-			file: `[{"tom-id":"banana", "barcodes":["0005680025047"], "corp-ids":[], "ecom-ids":["1"], "description":"Banana product", "name":"Fresh banana", "temperature-zone":["ambient"], "image":"www.nga-herzog.org"}]`, //,"retail-item":{"weight":{"unit-of-measure":"KG","weight":2.566},"dimensions":{"unit-of-measure":"CM","height":11.684,"width":38.1,"length":12.827}}}]`,
+			file: `[{"product-id":"banana", "barcodes":["0005680025047"], "corp-ids":[], "ecom-ids":["1"], "description":"Banana product", "name":"Fresh banana", "temperature-zone":["ambient"], "image":"www.nga-herzog.org"}]`, //,"retail-item":{"weight":{"unit-of-measure":"KG","weight":2.566},"dimensions":{"unit-of-measure":"CM","height":11.684,"width":38.1,"length":12.827}}}]`,
 			expectedProduct: product.Product{
 				TomID:           "banana",
 				Barcodes:        []string{"0005680025047"},
@@ -38,7 +38,7 @@ func TestUnmarshal(t *testing.T) {
 
 		{
 			name: "With 1 field",
-			file: `[{"tom-id":"p1"}]`,
+			file: `[{"product-id":"p1"}]`,
 			expectedProduct: product.Product{
 				TomID:         "p1",
 				UnknownFields: map[string]json.RawMessage{}},
@@ -46,7 +46,7 @@ func TestUnmarshal(t *testing.T) {
 		},
 		{
 			name: "With additional fields",
-			file: `[{"tom-id":"p1", "additional-fields": "Additional fields value"}]`,
+			file: `[{"product-id":"p1", "additional-fields": "Additional fields value"}]`,
 			expectedProduct: product.Product{
 				TomID:         "p1",
 				UnknownFields: map[string]json.RawMessage{"additional-fields": json.RawMessage(`"Additional fields value"`)}},
@@ -54,7 +54,7 @@ func TestUnmarshal(t *testing.T) {
 		},
 		{
 			name:            "invalid file",
-			file:            `[{"tom-id":"p1"`,
+			file:            `[{"product-id":"p1"`,
 			expectedProduct: product.Product{},
 			expectedError:   errors.New("errors during unmarshal products: unexpected end of JSON input"),
 		},

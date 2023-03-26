@@ -46,8 +46,8 @@ func IsFresh(fileDate time.Time) bool {
 }
 
 func IsPCv6(name string) bool {
-	if strings.Contains(name, "takeoff_product_catalog_") ||
-		strings.Contains(name, "Takeoff_product_catalog_") {
+	if strings.Contains(name, "file_") ||
+		strings.Contains(name, "fileNew_") {
 		return true
 	} else {
 		return false

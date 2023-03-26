@@ -88,7 +88,7 @@
     "temperature-zone": [
       "ambient"
     ],
-    "tom-id": "tom-1"
+    "product-id": "tom-1"
   }
   ,
   {
@@ -180,7 +180,7 @@
     "temperature-zone": [
       "ambient"
     ],
-    "tom-id": "tom-2"
+    "product-id": "tom-2"
   },
   {
     "barcodes": [
@@ -271,6 +271,6 @@
     "temperature-zone": [
       "ambient"
     ],
-    "tom-id": "tom-3"
+    "product-id": "tom-3"
   }
 ]

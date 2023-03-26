@@ -1,4 +1,4 @@
-module github.com/AndriiShevchun/parse-pc-files
+module github.com/RideForJoy/parse-pc-files
 
 go 1.20
 

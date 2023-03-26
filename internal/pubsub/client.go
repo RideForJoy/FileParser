@@ -8,7 +8,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/AndriiShevchun/parse-pc-files/internal/product"
+	"github.com/RideForJoy/parse-pc-files/internal/product"
 )
 
 const (

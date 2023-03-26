@@ -5,7 +5,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"testing"
 
-	"github.com/AndriiShevchun/parse-pc-files/internal/storage"
+	"github.com/RideForJoy/parse-pc-files/internal/storage"
 )
 
 func TestNewStorageClient(t *testing.T) {

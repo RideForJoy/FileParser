@@ -7,9 +7,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/AndriiShevchun/parse-pc-files/internal/product"
-	"github.com/AndriiShevchun/parse-pc-files/internal/pubsub"
-	"github.com/AndriiShevchun/parse-pc-files/internal/storage"
+	"github.com/RideForJoy/parse-pc-files/internal/product"
+	"github.com/RideForJoy/parse-pc-files/internal/pubsub"
+	"github.com/RideForJoy/parse-pc-files/internal/storage"
 )
 
 func processFile(ctx context.Context, storageClient *gcpStorage.Client, fileName string) error {

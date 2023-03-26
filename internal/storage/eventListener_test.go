@@ -2,7 +2,7 @@ package storage_test
 
 import (
 	"errors"
-	"github.com/AndriiShevchun/parse-pc-files/internal/storage"
+	"github.com/RideForJoy/parse-pc-files/internal/storage"
 	"github.com/cloudevents/sdk-go/v2/event"
 	"github.com/stretchr/testify/assert"
 	"testing"

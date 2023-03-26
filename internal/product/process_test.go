@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"testing"
 
-	"github.com/AndriiShevchun/parse-pc-files/internal/product"
+	"github.com/RideForJoy/parse-pc-files/internal/product"
 )
 
 func TestUnmarshal(t *testing.T) {

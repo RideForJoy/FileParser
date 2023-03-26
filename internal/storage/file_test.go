@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AndriiShevchun/parse-pc-files/internal/storage"
+	"github.com/RideForJoy/parse-pc-files/internal/storage"
 )
 
 func TestMovePath(t *testing.T) {

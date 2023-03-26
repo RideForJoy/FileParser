@@ -4,11 +4,8 @@ import (
 	"cloud.google.com/go/storage"
 	"context"
 	"fmt"
+	"os"
 	"strings"
-)
-
-const (
-	bucket = "pc-file"
 )
 
 func NewStorageClient(ctx context.Context) (*storage.Client, error) {
@@ -21,7 +18,7 @@ func NewStorageClient(ctx context.Context) (*storage.Client, error) {
 
 func Read(ctx context.Context, client *storage.Client, path string) *storage.Reader {
 	fmt.Println("Opening file: ", path)
-	file, _ := client.Bucket(bucket).Object(path).NewReader(ctx)
+	file, _ := client.Bucket(os.Getenv("BUCKET")).Object(path).NewReader(ctx)
 	return file
 }
 
@@ -34,6 +31,8 @@ func Move(ctx context.Context, client *storage.Client, folder string, movePath s
 	} else {
 		fullPath = dsdName
 	}
+
+	bucket := os.Getenv("BUCKET")
 
 	src := client.Bucket(bucket).Object(path)
 	dst := client.Bucket(bucket).Object(fullPath)

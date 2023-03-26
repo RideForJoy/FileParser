@@ -2,6 +2,7 @@ package product
 
 import (
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"strings"
 )
@@ -109,7 +110,7 @@ func UnmarshalWithUnknownFields(v interface{}, data []byte, unknownFields *map[s
 				continue
 			}
 			if err := json.Unmarshal(rawValue, fieldValue.Addr().Interface()); err != nil {
-				return err
+				return fmt.Errorf("field: %v parsed with error: %v", jsonFieldName, err)
 			}
 			delete(allFields, jsonFieldName)
 		}

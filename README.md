@@ -1,4 +1,10 @@
 
+## Workflow diagram:
+```mermaid
+graph TD;
+    Huge-json-file --> Split-function;
+    Split-function --> Pub/Sub;
+```
 
 ## Deploy from local machine:
 ```bash
